@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <br>
+    <%= link_to 'all shorten urls', shorten_urls_path %> <br>
+    <%= link_to 'create new shorten url', new_shorten_url_path %>
+     
     <%= yield %>
   </body>
 </html>

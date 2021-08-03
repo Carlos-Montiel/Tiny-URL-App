@@ -1,0 +1,32 @@
+<h1>Create a new short url</h1>
+<%= form_with(model: @shorten_url) do |form| %>
+    <% if @shorten_url.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@shorten_url.errors.count, "error") %> prohibited this shorten_url from being saved:</h2>
+  
+        <ul>
+          <% @shorten_url.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :long_url %>
+      <%= form.text_field :long_url %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+
+    <br>
+  
+    <div class="actions">
+      <%= link_to 'Back', shorten_urls_path %>
+      <%= form.submit %>
+    </div>
+<% end %>
+  

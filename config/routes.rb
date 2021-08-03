@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :shorten_urls, except: [:edit, :update]
+  root to: 'shorten_urls#new'
 end
