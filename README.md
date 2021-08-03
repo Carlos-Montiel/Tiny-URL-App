@@ -1,24 +1,33 @@
-# README
+# Url shortener app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Small Ruby on Rails application to short urls and keep track of the ips on each visit.
 
-Things you may want to cover:
+It consists of 2 tables: shorten url and statatistics url. When users click on the short URL they are redirected to the long URL and tracks the IP address of each visit.
 
-* Ruby version
+Details and dependences:
 
-* System dependencies
+* Ruby version 3.0.0
+* Rails version 6.1.4
+* PostgreSQL for database
+* Rspec as testing framework using [rspec-rails gem](https://github.com/rspec/rspec-rails)
 
-* Configuration
+## Installing
+After cloning the repository just run in console:
+```bash
+bundle install
+rails db:setup
+```
+With this, you have installed needed dependences, and prepared the database, Now it's ready to use!
 
-* Database creation
+## Using
+You can create the short url filling the info in the root path of the app, it generates a short url which you can copy and share with the people you want, each time someone visits the shorten url its created a record to keep track of the visitors ip.
 
-* Database initialization
+## Testing
+To run tests just type:
+```bash
+rspec -fd
+```
+It covers models test (relations, validations, callbacks), and some other request type test. 
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Demo app
+You can access to a demo of the app in the following [link](https://urlsh1.herokuapp.com).

@@ -5,7 +5,7 @@
 <p><strong>Token: </strong><%= @shorten_url.short_token %></p>
 <p>
   <strong>URL to share: </strong><%= "#{root_url}#{@shorten_url.short_token}" %> 
-  <%= link_to 'Visit', redirect_shorten_url_url(token: @shorten_url.short_token), data: { turbolinks: false } %>
+  <%= link_to 'Visit', redirect_shorten_url_url(token: @shorten_url.short_token), data: { turbolinks: false }, target: '_blank' %>
 </p>
 
 <h2>URL statistics</h2>
