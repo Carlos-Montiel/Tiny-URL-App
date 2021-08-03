@@ -30,6 +30,7 @@ class ShortenUrlsController < ApplicationController
   def redirect_to_url
     @shorten_url = ShortenUrl.find_by(short_token: params[:token])
 
+    @shorten_url.statistics_urls.build(accesed_ip: request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip).save!
     redirect_to @shorten_url.long_url
   end
 

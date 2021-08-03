@@ -33,4 +33,11 @@ RSpec.describe ShortenUrl, type: :model do
       expect(new_record.short_token).to_not eq('')
     end
   end
+
+  context 'relations' do
+    it 'has many statistics urls' do
+      shorten_url = described_class.reflect_on_association(:statistics_urls)
+      expect(shorten_url.macro).to eq(:has_many)
+    end
+  end
 end

@@ -3,4 +3,30 @@
 <p><strong>Long URL: </strong><%= @shorten_url.long_url %></p>
 <p><strong>Description: </strong><%= @shorten_url.description %></p>
 <p><strong>Token: </strong><%= @shorten_url.short_token %></p>
-<p><strong>URL to share: </strong><%= "#{root_url}#{@shorten_url.short_token}" %></p>
+<p>
+  <strong>URL to share: </strong><%= "#{root_url}#{@shorten_url.short_token}" %> 
+  <%= link_to 'Visit', redirect_shorten_url_url(token: @shorten_url.short_token), data: { turbolinks: false } %>
+</p>
+
+<h2>URL statistics</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ip visitor</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shorten_url.statistics_urls.each do |statistics_url| %>
+      <tr>
+        <td><%= statistics_url.accesed_ip %></td>
+        <td><%= l statistics_url.created_at, format: :long %></td>
+      </tr>
+    <% end %>
+    <% if @shorten_url.statistics_urls.length.zero? %>
+        <tr><td colspan='2'>No visits yet</td></tr>
+    <% end %>
+  </tbody>
+</table>

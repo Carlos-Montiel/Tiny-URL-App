@@ -18,7 +18,7 @@
         <td><%= shorten_url.description %></td>
         <td><%= shorten_url.short_token %></td>
         <td><%= "#{root_url}#{shorten_url.short_token}" %></td>
-        <td><%= link_to 'Visit', "#{root_url}#{shorten_url.short_token}" %></td>
+        <td><%= link_to 'Visit', redirect_shorten_url_url(token: shorten_url.short_token), data: { turbolinks: false } %></td>
         <td><%= link_to 'Show info', info_shorten_url_url(token: shorten_url.short_token) %></td>
         <td><%= link_to 'Destroy', shorten_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

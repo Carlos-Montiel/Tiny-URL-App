@@ -4,6 +4,8 @@ class ShortenUrl < ApplicationRecord
 
   before_validation :set_short_token
 
+  has_many :statistics_urls, dependent: :destroy
+
   private
   def set_short_token
     return unless new_record?

@@ -29,10 +29,11 @@ RSpec.describe 'ShortenUrls', type: :request do
   end
 
   describe 'GET /:token' do
-    it 'make a redirect to long url' do
+    it 'make a redirect to long url and saves a record for the accesed client ip' do
       shorten_url = ShortenUrl.create! valid_attrs
       get redirect_shorten_url_url(token: shorten_url.short_token)
       expect(response).to redirect_to(shorten_url.long_url)
+      expect(shorten_url.statistics_urls.count).to eq(1)
     end
   end
 
