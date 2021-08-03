@@ -26,4 +26,11 @@ RSpec.describe ShortenUrl, type: :model do
       expect(new_record).to be_valid
     end
   end
+
+  context 'callbacks' do
+    it 'generates a token when an element is created' do
+      new_record.save!
+      expect(new_record.short_token).to_not eq('')
+    end
+  end
 end
