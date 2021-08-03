@@ -20,11 +20,19 @@ RSpec.describe 'ShortenUrls', type: :request do
     end
   end
 
-  describe 'GET /show' do
+  describe 'GET /:token/info' do
     it 'renders a successful response' do
       shorten_url = ShortenUrl.create! valid_attrs
-      get shorten_url_url(shorten_url)
+      get info_shorten_url_url(token: shorten_url.short_token)
       expect(response).to be_successful
+    end
+  end
+
+  describe 'GET /:token' do
+    it 'make a redirect to long url' do
+      shorten_url = ShortenUrl.create! valid_attrs
+      get redirect_shorten_url_url(token: shorten_url.short_token)
+      expect(response).to redirect_to(shorten_url.long_url)
     end
   end
 

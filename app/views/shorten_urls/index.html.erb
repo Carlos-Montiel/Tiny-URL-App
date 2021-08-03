@@ -5,7 +5,8 @@
     <tr>
       <th>Long Url</th>
       <th>Description</th>
-      <th>Token</th>
+      <th>Shorten UR</th>
+      <th>URL to share</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +17,9 @@
         <td><%= shorten_url.long_url %></td>
         <td><%= shorten_url.description %></td>
         <td><%= shorten_url.short_token %></td>
-        <td><%= link_to 'Visit', shorten_url %></td>
-        <td><%= link_to 'Show', shorten_url %></td>
+        <td><%= "#{root_url}#{shorten_url.short_token}" %></td>
+        <td><%= link_to 'Visit', "#{root_url}#{shorten_url.short_token}" %></td>
+        <td><%= link_to 'Show info', info_shorten_url_url(token: shorten_url.short_token) %></td>
         <td><%= link_to 'Destroy', shorten_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

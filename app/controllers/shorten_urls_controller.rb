@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ShortenUrlsController < ApplicationController
-  before_action :set_shorten_url, only: %i[show destroy]
+  before_action :set_shorten_url, only: %i[destroy]
 
   def index
     @shorten_urls = ShortenUrl.all
@@ -23,7 +23,15 @@ class ShortenUrlsController < ApplicationController
     end
   end
 
-  def show; end
+  def url_info
+    @shorten_url = ShortenUrl.find_by(short_token: params[:token])
+  end
+
+  def redirect_to_url
+    @shorten_url = ShortenUrl.find_by(short_token: params[:token])
+
+    redirect_to @shorten_url.long_url
+  end
 
   def destroy
     @shorten_url.destroy
